@@ -6,6 +6,7 @@ bower_components
 build
 dist
 karma-out.log
+yarn-error.log
 
 # Yet-merged items from dev branch
 .eslintrc.js
