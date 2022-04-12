@@ -17,7 +17,11 @@ logger.info('Loading textures');
 const texture_names = [
   'flair',
   'portal',
+  'portalred',
+  'portalblue',
   'speedpad',
+  'speedpadred',
+  'speedpadblue',
   'speedpadblue',
   'speedpadred',
   'splats',
@@ -55,24 +59,24 @@ exports.set = function (new_textures) {
  */
 exports.get = function (custom) {
   return chrome.storage.promise.local.get(['textures', 'default_textures'])
-  .then(({ textures, default_textures }) => {
-    let urls = [];
-    for (let name of texture_names) {
-      if (custom && textures[name]) {
-        urls.push(textures[name]);
-      } else {
-        urls.push(default_textures[name]);
+    .then(({ textures, default_textures }) => {
+      let urls = [];
+      for (let name of texture_names) {
+        if (custom && textures[name]) {
+          urls.push(textures[name]);
+        } else {
+          urls.push(default_textures[name]);
+        }
       }
-    }
-    return loadImage(urls);
-  })
-  .then((images) => {
-    var out = {};
-    for (let i = 0; i < images.length; i++) {
-      out[texture_names[i]] = images[i];
-    }
-    return out;
-  });
+      return loadImage(urls);
+    })
+    .then((images) => {
+      var out = {};
+      for (let i = 0; i < images.length; i++) {
+        out[texture_names[i]] = images[i];
+      }
+      return out;
+    });
 }
 
 /**
@@ -115,25 +119,25 @@ function getDefaultTextures() {
  *   addressing updates to texture format.
  * @returns {Promise}
  */
-exports.ready = function (forceReload=true, overwrite=false) {
+exports.ready = function (forceReload = true, overwrite = false) {
   return chrome.storage.promise.local.get(["default_textures", "textures"])
-  .then(({default_textures, textures}) => {
-    let resetDefault = forceReload || !default_textures;
-    let resetCustom = overwrite || !textures;
-    if (resetDefault) {
-      return getDefaultTextures().then((new_textures) => {
-        if (resetCustom) {
-          textures = {};
-        }
-        return chrome.storage.promise.local.set({
-          default_textures: new_textures,
-          textures: textures
+    .then(({ default_textures, textures }) => {
+      let resetDefault = forceReload || !default_textures;
+      let resetCustom = overwrite || !textures;
+      if (resetDefault) {
+        return getDefaultTextures().then((new_textures) => {
+          if (resetCustom) {
+            textures = {};
+          }
+          return chrome.storage.promise.local.set({
+            default_textures: new_textures,
+            textures: textures
+          });
         });
-      });
-    } else if (resetCustom) {
-      return chrome.storage.promise.local.set({
-        textures: {}
-      });
-    }
-  });
+      } else if (resetCustom) {
+        return chrome.storage.promise.local.set({
+          textures: {}
+        });
+      }
+    });
 };

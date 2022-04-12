@@ -43,10 +43,10 @@ moment.updateLocale('en', {
 function createReplayPageButton() {
   if ($('#userscript-home').length) {
     $('#play-now').after('<a class="btn" id="ReplayMenuButton">Replays');
-    $('#ReplayMenuButton').append('<span class="sub-text">watch yourself');
+    $('#ReplayMenuButton').append('<span class="sub-text">nootified');
   } else {
     $('div.buttons > a[href="/boards"]').after('<a class="button" id="ReplayMenuButton">Replays');
-    $('#ReplayMenuButton').append('<span>watch yourself');
+    $('#ReplayMenuButton').append('<span>nootified');
   }
 
   $('#ReplayMenuButton').click(function () {
@@ -74,7 +74,7 @@ function modalFix() {
 
     $('.modal').on('shown.bs.modal', function () {
       // keep track of the number of open modals
-      if (typeof($('#tpr-container').data('open_modals')) == 'undefined') {
+      if (typeof ($('#tpr-container').data('open_modals')) == 'undefined') {
         $('#tpr-container').data('open_modals', 0);
       }
 
@@ -298,12 +298,14 @@ function initSettings() {
   $('#textureSaveButton').click(function () {
     // Load image files, if available, from file fields.
     let imageSources = {
-      tilesInput:        "tiles",
-      portalInput:       "portal",
-      speedpadInput:     "speedpad",
-      speedpadredInput:  "speedpadred",
+      tilesInput: "tiles",
+      portalInput: "portal",
+      portalredInput: "portalred",
+      portalblueInput: "portalblue",
+      speedpadInput: "speedpad",
+      speedpadredInput: "speedpadred",
       speedpadblueInput: "speedpadblue",
-      splatsInput:       "splats"
+      splatsInput: "splats"
     };
     let textures = {};
     Promise.all(Object.keys(imageSources).map((id) => {
@@ -606,7 +608,7 @@ function initMenu() {
       return readImportedFile(files, i);
     });
   }
-    
+
   // Track whether we're importing, keep table from updating if so.
   let importing = false;
   let upload = new Upload('raw-upload-button');
@@ -688,7 +690,7 @@ function setFormTitles() {
     ' want to show splats in the replay';
   $('#useSplatsTxt').prop('title', useSplatsTitle);
   $('#useSplatsCheckbox').prop('title', useSplatsTitle);
-    
+
   let canvasWidthAndHeightTitle = 'Set the width and height of the .webm movie file. The default is 1280 by 800,' +
     ' but set it to 1280 by 720 for true 720p resolution';
   $('#canvasWidthInput').prop('title', canvasWidthAndHeightTitle);
@@ -704,9 +706,9 @@ function emit(event, data) {
 // function to format metadata to put into title text
 function formatMetaDataTitle(replay) {
   let title = `Map: ${replay.info.map}\n`;
-  title    += `FPS: ${replay.info.fps}\n`;
-  title    += `Red Team:\n\t${replay.info.red_team.join('\n\t')}\n`;
-  title    += `Blue Team:\n\t${replay.info.blue_team.join('\n\t')}\n`;
+  title += `FPS: ${replay.info.fps}\n`;
+  title += `Red Team:\n\t${replay.info.red_team.join('\n\t')}\n`;
+  title += `Blue Team:\n\t${replay.info.blue_team.join('\n\t')}\n`;
   return title;
 }
 

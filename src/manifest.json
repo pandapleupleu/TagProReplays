@@ -14,24 +14,28 @@
       "js/background.js"
     ]
   },
-  "content_scripts": [{
-    "exclude_matches": [ "http://support.koalabeast.com/*" ],
-    "js": [
-      "js/content.js"
-    ],
-    "css": [
-      "css/record.css",
-      "css/menu.css",
-      "css/viewer.css"
-    ],
-    "matches": [
-      "*://*.koalabeast.com/*",
-      "*://koalabeast.com/*",
-      "http://*.newcompte.fr/*",
-      "http://tangent.jukejuice.com/*"
-    ],
-    "run_at": "document_end"
-  }],
+  "content_scripts": [
+    {
+      "exclude_matches": [
+        "http://support.koalabeast.com/*"
+      ],
+      "js": [
+        "js/content.js"
+      ],
+      "css": [
+        "css/record.css",
+        "css/menu.css",
+        "css/viewer.css"
+      ],
+      "matches": [
+        "*://*.koalabeast.com/*",
+        "*://koalabeast.com/*",
+        "http://*.newcompte.fr/*",
+        "http://tangent.jukejuice.com/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
   "icons": {
     "128": "images/icon128.png"
   },
@@ -43,6 +47,8 @@
   "web_accessible_resources": [
     "js/recording.js",
     "images/*.png",
+    "images/portalblue.png",
+    "image/portalred.png",
     "html/*.html",
     "css/*.css",
     "fonts/*"
