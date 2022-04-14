@@ -47,8 +47,6 @@
   "web_accessible_resources": [
     "js/recording.js",
     "images/*.png",
-    "images/portalblue.png",
-    "image/portalred.png",
     "html/*.html",
     "css/*.css",
     "fonts/*"
