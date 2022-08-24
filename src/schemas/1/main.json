@@ -41,6 +41,9 @@
             "from": {
               "type": ["string", "integer", "null"]
             },
+            "for": {
+              "type": ["string", "integer", "null"]
+            },
             "idInGroup": {
               "type": ["string", "null"]
             },
