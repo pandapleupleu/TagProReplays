@@ -55,6 +55,10 @@
               "description": "Optional mod parameter.",
               "type": "boolean"
             },
+            "monitor": {
+              "description": "Optional monitor parameter.",
+              "type": "boolean"
+            },
             "removeAt": {
               "description": "The time at which to remove the chat, 30s after it was sent. May not be present if replay was made while 3.0 bug was present.",
               "$ref": "#/definitions/epochTime"
@@ -87,12 +91,19 @@
             "from": {
               "type": ["string", "integer", "null"]
             },
+            "for": {
+              "type": ["string", "integer", "null"]
+            },
             "idInGroup": {
               "type": ["string", "null"]
             },
             "message": { "type": "string" },
             "mod": {
               "description": "Optional mod parameter.",
+              "type": "boolean"
+            },
+            "monitor": {
+              "description": "Optional monitor parameter.",
               "type": "boolean"
             },
             "name": {
