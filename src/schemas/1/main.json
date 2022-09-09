@@ -30,7 +30,7 @@
     "chatInstance": {
       "title": "Chat Message.",
       "description": "Information about a message sent to the player via chat.",
-      "oneOf": [
+      "anyOf": [
         {
           "type": "object",
           "properties": {
@@ -75,7 +75,7 @@
             "from",
             "message"
           ],
-          "additionalProperties": false
+          "additionalProperties": true
         },
         {
           "type": "object",
@@ -131,7 +131,7 @@
             "team",
             "to"
           ],
-          "additionalProperties": false
+          "additionalProperties": true
         },
         {
           "description": "Extraneous sound packet seen in some old replays.",
@@ -146,7 +146,7 @@
             "v",
             "removeAt"
           ],
-          "additionalProperties": false
+          "additionalProperties": true
         }
       ]
     },
@@ -469,7 +469,6 @@
   },
   "required": [
     "bombs",
-    "chat",
     "clock",
     "floorTiles",
     "map",
@@ -478,5 +477,5 @@
     "splats",
     "wallMap"
   ],
-  "additionalProperties": false
+  "additionalProperties": true
 }
