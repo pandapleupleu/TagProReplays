@@ -43,10 +43,10 @@ moment.updateLocale('en', {
 function createReplayPageButton() {
   if ($('#userscript-home').length) {
     $('#play-now').after('<a class="btn" id="ReplayMenuButton">Replays');
-    $('#ReplayMenuButton').append('<span class="sub-text">nootified');
+    $('#ReplayMenuButton').append('<span class="sub-text">watch clips');
   } else {
     $('div.buttons > a[href="/boards"]').after('<a class="button" id="ReplayMenuButton">Replays');
-    $('#ReplayMenuButton').append('<span>nootified');
+    $('#ReplayMenuButton').append('<span>watch clips');
   }
 
   $('#ReplayMenuButton').click(function () {
