@@ -17,7 +17,11 @@
   "content_scripts": [
     {
       "exclude_matches": [
-        "http://support.koalabeast.com/*"
+        "http://support.koalabeast.com/*",
+        "https://tagpro.koalabeast.com/groups/*",
+        "https://tagpro.koalabeast.com/replays",
+        "https://tagpro.koalabeast.com/feedback",
+        "https://tagpro.koalabeast.com/maps"
       ],
       "js": [
         "js/content.js"
